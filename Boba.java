@@ -1,4 +1,6 @@
 import java.util.Random;
+import java.util.*;
+import java.util.Arrays;
 
 public class Boba extends Battleship {
 
@@ -10,32 +12,49 @@ public class Boba extends Battleship {
         points = initialPoints;
     }
 
-    public void randomizeShips() {
-        x = rand.nextInt(10);
-        y = rand.nextInt(10);
-        x2 = rand.nextInt(10);
-        y2 = rand.nextInt(10);
+    public static void randomizeShips() {
+        Random randomizer = new Random();
 
-        while 
+        int[] milkTea = {2, 3, 3, 4, 5};
+
+        for (Integer i : milkTea) {
+            x = randomizer.nextInt(10);
+            y = randomizer.nextInt(10);
+            xOrY = randomizer.nextBoolean();
+            int counter = 0;
+
+            if (xOrY = true) {
+                x2 = x;
+                y2 = y + (int)milkTea.get(milkTea, i);
+            } else {
+                System.out.println("Nothing");
+            }
+
+            System.out.println(x);
+            System.out.println(y);
+            System.out.println(xOrY);
+            System.out.println(x2);
+            System.out.println(y2);
+        }
     }
 
-    public void manuallyPlaceShips() {
+    public static void manuallyPlaceShips() {
         System.out.println("Where do you want to place your ships?\n" +
                 "Insert your starting x point.\n" +
                 "Please list the smaller point first.");
-        gudetama1 = Hello.nextInt();
+        x = Hello.nextInt();
         System.out.println("Insert your starting y point.\n" +
                 "Please list the smaller point first.");
-        gudetama2 = Hello.nextInt();
+        y = Hello.nextInt();
         System.out.println("Insert your ending x point.");
-        gudetama3 = Hello.nextInt();
+        x2 = Hello.nextInt();
         System.out.println("Insert your ending y point.");
-        gudetama4 = Hello.nextInt();
+        y2 = Hello.nextInt();
 
 
     }
 
-    public void fire() {
+    public static void fire() {
         System.out.println("Where would you like to fire?\nInsert your x value:");
         int bye1 = Hello.nextInt();
         System.out.println("Insert your y value:");
@@ -47,8 +66,8 @@ public class Boba extends Battleship {
             if (bye2 < 1 || bye2 > 10) {
                 System.out.println("Invalid entry.");
             } else {
-                if (bye1 >= gudetama1 && bye1 <= gudetama3) {
-                    if (bye2 >= gudetama2 && bye2 <= gudetama4) {
+                if (bye1 >= x && bye1 <= x2) {
+                    if (bye2 >= y && bye2 <= y2) {
                         System.out.println("Hit");
                         points = points + 1;
                     } else {
