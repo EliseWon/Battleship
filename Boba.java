@@ -98,7 +98,7 @@ public class Boba extends Battleship {
             }
         }
 
-        public static void computerFire () {
+        public static void computerFire() {
             Random randomizer2 = new Random();
             bye1 = randomizer2.nextInt(10);
             bye2 = randomizer2.nextInt(10);
@@ -113,5 +113,9 @@ public class Boba extends Battleship {
             } else {
                 System.out.println("Miss");
             }
+        }
+
+        public static void dontStackShips() {
+`           `
         }
     }
