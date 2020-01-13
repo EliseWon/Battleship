@@ -17,7 +17,11 @@ public class Battleship {
         Boba ship1 = new Boba(6, 2, 6, 5, 0);
         Boba ship2 = new Boba(5, 3, 8, 3, 0);
 
-        System.out.println("Would you like to place your ships randomly or manually?");
+        System.out.println("Welcome to Battleship!\n" +
+                "This interface doesn't have a visual cue for the battleships, \n" +
+                "so I highly recommend drawing it on a piece of paper.\n" +
+                "The field goes from zero to nine.\n\n" +
+                "Would you like to place your ships randomly or manually?");
         randomVsManual = Hello.nextLine();
 
         if (randomVsManual.equalsIgnoreCase("Randomly")) {

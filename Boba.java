@@ -18,13 +18,24 @@ public class Boba extends Battleship {
         Random randomizer = new Random();
 
         int[] milkTea = {2, 3, 3, 4, 5};
-        int i = 0;
+        int[] crystalBobaX = {-1, -1, -1, -1, -1};
+//        int[] crystalBobaY = {-1, -1, -1, -1, -1};
+        int a = 0;
+        int b = 0;
 
-        for (i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
+
+//            for (int a = 0; a < crystalBobaX.length; a++) {
+//                x = randomizer.nextInt(10);
+//                crystalBobaX[a] = x;
+//                while ((int) Array.get(crystalBobaX, a) == x) {
+//                    x = randomizer.nextInt(10);
+//                }
+//                crystalBobaX[a] = x;
+//            }
+
             x = randomizer.nextInt(10);
             y = randomizer.nextInt(10);
-
-            pearls = randomizer.nextInt(100);
             xOrY = randomizer.nextBoolean();
 
             if (xOrY == true) {
@@ -32,8 +43,20 @@ public class Boba extends Battleship {
                 y2 = y + (int) Array.get(milkTea, i);
             } else {
                 y2 = y;
-                x2 = x + (int) Array.get(milkTea, i);
+
+                //for (a = 0; a < crystalBobaX.length; a++) {
+                    for (x2 = x + (int) Array.get(milkTea, i); x < x2; x++) {
+                        for (b = 0; b < (int) Array.get(milkTea, i); b++) {
+                             if ((int) Array.get(crystalBobaX, a) + b == x) {
+                                 x = randomizer.nextInt(10);
+                             }
+                        }
+                    }
+                    crystalBobaX[a] = x;
+                //}
             }
+            System.out.println(x);
+
         }
     }
 
@@ -45,18 +68,20 @@ public class Boba extends Battleship {
         for (i = 0; i < 5; i++) {
             System.out.println("Where do you want to place your ships?\n" +
                     "Insert your starting x point.\n" +
-                    "Please list the left-most point first.");
+                    "Please list the left-most point.");
             x = Hello.nextInt();
             System.out.println("Insert your starting y point.\n" +
-                    "Please list the top-most point first.");
+                    "Please list the top-most point.");
             y = Hello.nextInt();
             System.out.println("Horizontal or vertical?");
             direction = Hello.nextLine();
 
             if (direction.equalsIgnoreCase("Horizontal")) {
                 x2 = x + (int) Array.get(milkTea2, i);
+                y2 = y;
             } else if (direction.equalsIgnoreCase("Vertical")) {
                 y2 = y + (int) Array.get(milkTea2, i);
+                x2 = x;
             } else {
                 System.out.println("Not a valid direction.");
             }
@@ -113,9 +138,5 @@ public class Boba extends Battleship {
             } else {
                 System.out.println("Miss");
             }
-        }
-
-        public static void dontStackShips() {
-`           `
         }
     }
