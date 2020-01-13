@@ -12,7 +12,6 @@ public class Battleship {
     static int bye1;
     static int bye2;
     static int pearls;
-    static String crystalBoba;
 
     public static void main(String args[]) {
         Boba ship1 = new Boba(6, 2, 6, 5, 0);
@@ -21,19 +20,19 @@ public class Battleship {
         System.out.println("Would you like to place your ships randomly or manually?");
         randomVsManual = Hello.nextLine();
 
-        if (randomVsManual.equals("Randomly")) {
+        if (randomVsManual.equalsIgnoreCase("Randomly")) {
             ship1.randomizeShips();
             ship2.randomizeShips();
-        } else if (randomVsManual.equals("Manually")) {
-            ship1.manuallyPlaceShips();
+        } else if (randomVsManual.equalsIgnoreCase("Manually")) {
+            ship1.randomizeShips();
             ship2.manuallyPlaceShips();
         } else {
             System.out.println("Invalid response.");
         }
 
-        while (points <= 17) {
+        while (ship1.points <= 17 || ship2.points <= 17) {
             ship1.fire();
-            ship2.fire();
+            ship2.computerFire();
         }
     }
 }
