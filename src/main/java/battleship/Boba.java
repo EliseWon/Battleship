@@ -5,7 +5,7 @@ import java.lang.reflect.Array;
 
 public class Boba extends Battleship {
 
-    public static int[] milkTea = {2, 3, 3, 4, 5};
+    public static int[] shipLengths = {2, 3, 3, 4, 5};
 
     public Boba(int startX, int startY, int endX, int endY, int initialPoints) {
         x = startX;
@@ -22,8 +22,8 @@ public class Boba extends Battleship {
         //public static int numRows = 10;
         //public static int numColumns = 10;
 
-        for (int i = 0; i < milkTea.length; i++) {
-            int z = (int) Array.get(milkTea, i);
+        for (int i = 0; i < shipLengths.length; i++) {
+            int z = (int) Array.get(shipLengths, i);
 
             makeShip(z);
             int dks = 4;
@@ -49,14 +49,12 @@ public class Boba extends Battleship {
                 int dssdf = 4;
             }
             int asdf3 = 4;
+            System.out.println(x);
+            System.out.println(y);
         }
-
-        System.out.println(x);
-        System.out.println(y);
     }
 
     public static void manuallyPlaceShips() {
-        int[] milkTea2 = {2, 3, 3, 4, 5};
         String direction;
 
         for (int i = 0; i < 5; i++) {
@@ -71,10 +69,10 @@ public class Boba extends Battleship {
             direction = Hello.nextLine();
 
             if (direction.equalsIgnoreCase("Horizontal")) {
-                x2 = x + (int) Array.get(milkTea2, i);
+                x2 = x + (int) Array.get(shipLengths, i);
                 y2 = y;
             } else if (direction.equalsIgnoreCase("Vertical")) {
-                y2 = y + (int) Array.get(milkTea2, i);
+                y2 = y + (int) Array.get(shipLengths, i);
                 x2 = x;
             } else {
                 System.out.println("Not a valid direction.");
