@@ -5,6 +5,8 @@ import java.lang.reflect.Array;
 
 public class Boba extends Battleship {
 
+    public static int[] milkTea = {2, 3, 3, 4, 5};
+
     public Boba(int startX, int startY, int endX, int endY, int initialPoints) {
         x = startX;
         y = startY;
@@ -17,26 +19,33 @@ public class Boba extends Battleship {
 
         int[][] theBoard = new int[10][10];
 
-        for (int i = 0; i < 5; i++) {
-            makeShip(i);
+        for (int i = 0; i < milkTea.length; i++) {
+            int z = (int) Array.get(milkTea, i);
+
+            makeShip(z);
+            int dks = 4;
 
             while (x2 > 9 || y2 > 9) {
-                makeShip(i);
+                makeShip(z);
             }
+            int lksd = 4;
 
             for (int m = 0; m < theBoard[0].length; m++) {
                 for (int n = 0; n < theBoard[1].length; n++) {
                     while (theBoard[x][y] == 1) {
-                        Boba.makeShip(i);
+                        Boba.makeShip(z);
                     }
+                    int asdf = 4;
                     for (int a = x; x < x2; x++) {
                         for (int b = y; y < y2; y++) {
                             theBoard[a][b] = 1;
                         }
-
                     }
+                    int asd = 5;
                 }
+                int dssdf = 4;
             }
+            int asdf3 = 4;
         }
 
         System.out.println(x);
@@ -45,10 +54,9 @@ public class Boba extends Battleship {
 
     public static void manuallyPlaceShips() {
         int[] milkTea2 = {2, 3, 3, 4, 5};
-        int i = 0;
         String direction;
 
-        for (i = 0; i < 5; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println("Where do you want to place your ships?\n" +
                     "Insert your starting x point.\n" +
                     "Please list the left-most point.");
@@ -71,9 +79,8 @@ public class Boba extends Battleship {
         }
     }
 
-    public static int[] makeShip(int i) {
+    public static int[] makeShip(int z) {
         Random randomizer = new Random();
-        int[] milkTea = {2, 3, 3, 4, 5};
 
         int x = randomizer.nextInt(10);
         int y = randomizer.nextInt(10);
@@ -81,11 +88,11 @@ public class Boba extends Battleship {
 
         if (xOrY == true) {
             x2 = x;
-            y2 = y + (int) Array.get(milkTea, i);
+            y2 = y + z;
 
         } else {
             y2 = y;
-            x2 = x + (int) Array.get(milkTea, i);
+            x2 = x + z;
         }
 
         int[] grassJelly = {x, y, x2, y2};
