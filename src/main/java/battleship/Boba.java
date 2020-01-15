@@ -18,6 +18,9 @@ public class Boba extends Battleship {
     public static void randomizeShips() {
 
         int[][] theBoard = new int[10][10];
+        //public static String [][] grid = new String [numRows][numColumns];
+        //public static int numRows = 10;
+        //public static int numColumns = 10;
 
         for (int i = 0; i < milkTea.length; i++) {
             int z = (int) Array.get(milkTea, i);
@@ -30,12 +33,12 @@ public class Boba extends Battleship {
             }
             int lksd = 4;
 
-            for (int m = 0; m < theBoard[0].length; m++) {
-                for (int n = 0; n < theBoard[1].length; n++) {
+            for (int m = 0; m < theBoard.length; m++) {
+                for (int n = 0; n < theBoard[0].length; n++) {
                     while (theBoard[x][y] == 1) {
-                        Boba.makeShip(z);
+                        makeShip(z);
                     }
-                    int asdf = 4;
+                    int asDf = 4;
                     for (int a = x; x < x2; x++) {
                         for (int b = y; y < y2; y++) {
                             theBoard[a][b] = 1;
