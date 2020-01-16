@@ -8,8 +8,7 @@ public class Battleship {
     static int y;
     static int x2;
     static int y2;
-    static int points = 0;
-    static String randomVsManual;
+    int points = 0;
     static boolean xOrY;
     static int bye1;
     static int bye2;
@@ -23,7 +22,7 @@ public class Battleship {
                 "so I highly recommend drawing it on a piece of paper.\n" +
                 "The field goes from zero to nine.\n\n" +
                 "Would you like to place your ships randomly or manually?");
-        randomVsManual = Hello.nextLine();
+        String randomVsManual = Hello.nextLine();
 
         if (randomVsManual.equalsIgnoreCase("Randomly")) {
             System.out.println("Player 1");

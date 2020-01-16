@@ -1,13 +1,16 @@
 package battleship;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Random;
 import java.lang.reflect.Array;
 
 public class Boba extends Battleship {
 
-    public static int[] shipLengths = {2, 3, 3, 4, 5};
+    private static int[] shipLengths = {2, 3, 3, 4, 5};
 
-    public Boba(int startX, int startY, int endX, int endY, int initialPoints) {
+    Boba(int startX, int startY, int endX, int endY, int initialPoints) {
         x = startX;
         y = startY;
         x2 = endX;
@@ -15,7 +18,7 @@ public class Boba extends Battleship {
         points = initialPoints;
     }
 
-    public static void randomizeShips() {
+    void randomizeShips() {
 
         int[][] theBoard = new int[10][10];
         //public static String [][] grid = new String [numRows][numColumns];
@@ -26,17 +29,28 @@ public class Boba extends Battleship {
             int z = (int) Array.get(shipLengths, i);
 
             makeShip(z);
-            int dks = 4;
+            int[] randomizedShipCoordinates = makeShip(z);
+            x = (int) Array.get(randomizedShipCoordinates, 0);
+            y = (int) Array.get(randomizedShipCoordinates, 1);
+            x2 = (int) Array.get(randomizedShipCoordinates, 2);
+            y2 = (int) Array.get(randomizedShipCoordinates, 3);
 
             while (x2 > 9 || y2 > 9) {
                 makeShip(z);
+                x = (int) Array.get(randomizedShipCoordinates, 0);
+                y = (int) Array.get(randomizedShipCoordinates, 1);
+                x2 = (int) Array.get(randomizedShipCoordinates, 2);
+                y2 = (int) Array.get(randomizedShipCoordinates, 3);
             }
-            int lksd = 4;
 
             for (int m = 0; m < theBoard.length; m++) {
                 for (int n = 0; n < theBoard[0].length; n++) {
                     while (theBoard[x][y] == 1) {
                         makeShip(z);
+                        x = (int) Array.get(randomizedShipCoordinates, 0);
+                        y = (int) Array.get(randomizedShipCoordinates, 1);
+                        x2 = (int) Array.get(randomizedShipCoordinates, 2);
+                        y2 = (int) Array.get(randomizedShipCoordinates, 3);
                     }
                     int asDf = 4;
                     for (int a = x; x < x2; x++) {
@@ -44,17 +58,15 @@ public class Boba extends Battleship {
                             theBoard[a][b] = 1;
                         }
                     }
-                    int asd = 5;
                 }
-                int dssdf = 4;
             }
-            int asdf3 = 4;
-            System.out.println(x);
-            System.out.println(y);
+
+            System.out.println(x + ", " + y);
+
         }
     }
 
-    public static void manuallyPlaceShips() {
+    void manuallyPlaceShips() {
         String direction;
 
         for (int i = 0; i < 5; i++) {
@@ -80,28 +92,31 @@ public class Boba extends Battleship {
         }
     }
 
-    public static int[] makeShip(int z) {
+    @NotNull
+    @Contract("_ -> new")
+    private int[] makeShip(int z) {
         Random randomizer = new Random();
+        int xEnd;
+        int yEnd;
 
-        int x = randomizer.nextInt(10);
-        int y = randomizer.nextInt(10);
+        int xStart = randomizer.nextInt(10);
+        int yStart = randomizer.nextInt(10);
         xOrY = randomizer.nextBoolean();
 
-        if (xOrY == true) {
-            x2 = x;
-            y2 = y + z;
+        if (xOrY) {
+            xEnd = xStart;
+            yEnd = yStart + z;
 
         } else {
-            y2 = y;
-            x2 = x + z;
+            yEnd = yStart;
+            xEnd = xStart + z;
         }
 
-        int[] grassJelly = {x, y, x2, y2};
-        return grassJelly;
+        return new int[]{xStart, yStart, xEnd, yEnd};
 
     }
 
-    public static void fire () {
+    void fire() {
         System.out.println("Where would you like to fire?\nInsert your x value:");
         try {
             int bye1 = Hello.nextInt();
@@ -136,7 +151,7 @@ public class Boba extends Battleship {
         }
     }
 
-    public static void computerFire() {
+    void computerFire() {
         Random randomizer2 = new Random();
         bye1 = randomizer2.nextInt(10);
         bye2 = randomizer2.nextInt(10);
