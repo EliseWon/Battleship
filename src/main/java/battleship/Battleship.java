@@ -10,8 +10,8 @@ public class Battleship {
     static int y2;
     int points = 0;
     static boolean xOrY;
-    static int bye1;
-    static int bye2;
+    static int fireX;
+    static int fireY;
 
     public static void main(String args[]) {
         Boba ship1 = new Boba(0, 0, 0, 0, 0);

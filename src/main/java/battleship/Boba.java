@@ -21,22 +21,21 @@ public class Boba extends Battleship {
     void randomizeShips() {
 
         int[][] theBoard = new int[10][10];
-        //public static String [][] grid = new String [numRows][numColumns];
-        //public static int numRows = 10;
-        //public static int numColumns = 10;
+
 
         for (int i = 0; i < shipLengths.length; i++) {
             int z = (int) Array.get(shipLengths, i);
+            int[] randomizedShipCoordinates = makeShip(z);
 
             makeShip(z);
-            int[] randomizedShipCoordinates = makeShip(z);
             x = (int) Array.get(randomizedShipCoordinates, 0);
             y = (int) Array.get(randomizedShipCoordinates, 1);
             x2 = (int) Array.get(randomizedShipCoordinates, 2);
             y2 = (int) Array.get(randomizedShipCoordinates, 3);
+            int ds = 4;
 
             while (x2 > 9 || y2 > 9) {
-                makeShip(z);
+                // randomizedShipCoordinates = makeShip(z); add this so that it's not an infinite loop
                 x = (int) Array.get(randomizedShipCoordinates, 0);
                 y = (int) Array.get(randomizedShipCoordinates, 1);
                 x2 = (int) Array.get(randomizedShipCoordinates, 2);
@@ -46,13 +45,13 @@ public class Boba extends Battleship {
             for (int m = 0; m < theBoard.length; m++) {
                 for (int n = 0; n < theBoard[0].length; n++) {
                     while (theBoard[x][y] == 1) {
-                        makeShip(z);
+                     //   randomizedShipCoordinates =  makeShip(z); same thing
                         x = (int) Array.get(randomizedShipCoordinates, 0);
                         y = (int) Array.get(randomizedShipCoordinates, 1);
                         x2 = (int) Array.get(randomizedShipCoordinates, 2);
                         y2 = (int) Array.get(randomizedShipCoordinates, 3);
+
                     }
-                    int asDf = 4;
                     for (int a = x; x < x2; x++) {
                         for (int b = y; y < y2; y++) {
                             theBoard[a][b] = 1;
@@ -60,9 +59,8 @@ public class Boba extends Battleship {
                     }
                 }
             }
-
-            System.out.println(x + ", " + y);
-
+            System.out.println("Start: " + x + ", " + y);
+            System.out.println("End:" + x2 + ", " + y2);
         }
     }
 
@@ -77,7 +75,7 @@ public class Boba extends Battleship {
             System.out.println("Insert your starting y point.\n" +
                     "Please list the top-most point.");
             y = Hello.nextInt();
-            System.out.println("Horizontal or vertical?");
+            System.out.println("Would you like to place your ship horizontally or vertically?");
             direction = Hello.nextLine();
 
             if (direction.equalsIgnoreCase("Horizontal")) {
@@ -112,35 +110,34 @@ public class Boba extends Battleship {
             xEnd = xStart + z;
         }
 
-        return new int[]{xStart, yStart, xEnd, yEnd};
-
+        return new int[] {xStart, yStart, xEnd, yEnd};
     }
 
     void fire() {
-        System.out.println("Where would you like to fire?\nInsert your x value:");
+        System.out.println("Where would you like to fire?\nEnter the x value:");
         try {
-            int bye1 = Hello.nextInt();
+            int fireX = Hello.nextInt();
         } catch (Exception e) {
             System.out.println("Error: Not an integer.");
         }
 
-        System.out.println("Insert your y value:");
+        System.out.println("Enter the y value:");
         try {
-            int bye2 = Hello.nextInt();
+            int fireY = Hello.nextInt();
         } catch (Exception e) {
             System.out.println("Error: Not an integer.");
         }
 
-        if (bye1 < 1 || bye1 > 10) {
+        if (fireX < 1 || fireX > 10) {
             System.out.println("Invalid entry.");
         } else {
-            if (bye2 < 1 || bye2 > 10) {
+            if (fireY < 1 || fireY > 10) {
                 System.out.println("Invalid entry.");
             } else {
-                if (bye1 >= x && bye1 <= x2) {
-                    if (bye2 >= y && bye2 <= y2) {
+                if (fireX >= x && fireX <= x2) {
+                    if (fireY >= y && fireY <= y2) {
                         System.out.println("Hit");
-                        points = points + 1;
+                        points++;
                     } else {
                         System.out.println("Miss");
                     }
@@ -153,13 +150,13 @@ public class Boba extends Battleship {
 
     void computerFire() {
         Random randomizer2 = new Random();
-        bye1 = randomizer2.nextInt(10);
-        bye2 = randomizer2.nextInt(10);
+        fireX = randomizer2.nextInt(10);
+        fireY = randomizer2.nextInt(10);
 
-        if (bye1 >= x && bye1 <= x2) {
-            if (bye2 >= y && bye2 <= y2) {
+        if (fireX >= x && fireX <= x2) {
+            if (fireY >= y && fireY <= y2) {
                 System.out.println("Hit");
-                points = points + 1;
+                points++;
             } else {
                 System.out.println("Miss");
             }
