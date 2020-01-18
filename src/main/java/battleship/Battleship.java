@@ -1,6 +1,7 @@
 package battleship;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Battleship {
     static Scanner Hello = new Scanner(System.in);
@@ -9,11 +10,12 @@ public class Battleship {
     static int x2;
     static int y2;
     int points = 0;
-    static boolean xOrY;
+    static boolean isX;
     static int fireX;
     static int fireY;
 
-    public static void main(String args[]) {
+
+    public static void main(String[] args) {
         Boba ship1 = new Boba(0, 0, 0, 0, 0);
         Boba ship2 = new Boba(0, 0, 0, 0, 0);
 
@@ -22,19 +24,19 @@ public class Battleship {
                 "so I highly recommend drawing it on a piece of paper.\n" +
                 "The field goes from zero to nine.\n\n" +
                 "Would you like to place your ships randomly or manually?");
-        String randomVsManual = Hello.nextLine();
+//        String randomVsManual = Hello.nextLine();
 
-        if (randomVsManual.equalsIgnoreCase("Randomly")) {
+//        if (randomVsManual.equalsIgnoreCase("Randomly")) {
             System.out.println("Player 1");
-            ship1.randomizeShips();
+            //ship1.randomizeShips();
             System.out.println("\nPlayer 2");
-            ship2.randomizeShips();
-        } else if (randomVsManual.equalsIgnoreCase("Manually")) {
-            ship1.randomizeShips();
-            ship2.manuallyPlaceShips();
-        } else {
-            System.out.println("Invalid response.");
-        }
+            //ship2.randomizeShips();
+//        } else if (randomVsManual.equalsIgnoreCase("Manually")) {
+//            ship1.randomizeShips();
+//            ship2.manuallyPlaceShips();
+//        } else {
+//            System.out.println("Invalid response.");
+//        }
 
         while (ship1.points <= 17 || ship2.points <= 17) {
             ship1.fire();

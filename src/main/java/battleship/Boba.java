@@ -3,13 +3,12 @@ package battleship;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Random;
 import java.lang.reflect.Array;
+import java.util.Random;
 
 public class Boba extends Battleship {
 
-    private static int[] shipLengths = {1, 2, 2, 3, 4};
-    private int[][] theBoard = new int[10][10];
+    int[][] theBoard = new int[10][10];
 
     Boba(int startX, int startY, int endX, int endY, int initialPoints) {
         x = startX;
@@ -19,110 +18,34 @@ public class Boba extends Battleship {
         points = initialPoints;
     }
 
-    void randomizeShips() {
-
-        for (int i = 0; i < shipLengths.length; i++) {
-            int z = (int) Array.get(shipLengths, i);
-            int[] randomizedShipCoordinates = makeShip(z);
-
-            x = (int) Array.get(randomizedShipCoordinates, 0);
-            y = (int) Array.get(randomizedShipCoordinates, 1);
-            x2 = (int) Array.get(randomizedShipCoordinates, 2);
-            y2 = (int) Array.get(randomizedShipCoordinates, 3);
-
-            while (x2 > 9 || y2 > 9) {
-                randomizedShipCoordinates = makeShip(z);
-                x = (int) Array.get(randomizedShipCoordinates, 0);
-                y = (int) Array.get(randomizedShipCoordinates, 1);
-                x2 = (int) Array.get(randomizedShipCoordinates, 2);
-                y2 = (int) Array.get(randomizedShipCoordinates, 3);
-            }
-
-            for (int m = 0; m < theBoard.length; m++) {
-                for (int n = 0; n < theBoard[0].length; n++) {
-                    while (theBoard[m][n] == theBoard[x][y] && theBoard[x][y] == 1) {
-                        randomizedShipCoordinates =  makeShip(z);
-                        x = (int) Array.get(randomizedShipCoordinates, 0);
-                        y = (int) Array.get(randomizedShipCoordinates, 1);
-                        x2 = (int) Array.get(randomizedShipCoordinates, 2);
-                        y2 = (int) Array.get(randomizedShipCoordinates, 3);
-                    }
-                    for (int a = x; x < x2; x++) {
-                        for (int b = y; y < y2; y++) {
-                            theBoard[a][b] = 1;
-                        }
-                    }
-                }
-            }
-            System.out.println("Start: " + x + ", " + y);
-            System.out.println("End:" + x2 + ", " + y2);
-        }
-    }
-
-    void manuallyPlaceShips() {
-
-        for (int i = 0; i < 5; i++) {
-            int z = (int) Array.get(shipLengths, i);
-            int[] manualShipCoordinates = makeShip2(z);
-            x = (int) Array.get(manualShipCoordinates, 0);
-            y = (int) Array.get(manualShipCoordinates, 1);
-            x2 = (int) Array.get(manualShipCoordinates, 2);
-            y2 = (int) Array.get(manualShipCoordinates, 3);
-
-            while (x2 > 9 || y2 > 9) {
-                manualShipCoordinates = makeShip(z);
-                x = (int) Array.get(manualShipCoordinates, 0);
-                y = (int) Array.get(manualShipCoordinates, 1);
-                x2 = (int) Array.get(manualShipCoordinates, 2);
-                y2 = (int) Array.get(manualShipCoordinates, 3);
-            }
-
-            for (int m = 0; m < theBoard.length; m++) {
-                for (int n = 0; n < theBoard[0].length; n++) {
-                    while (theBoard[m][n] == theBoard[x][y] && theBoard[x][y] == 1) {
-                        makeShip2(z);
-                        manualShipCoordinates = makeShip2(z);
-                        x = (int) Array.get(manualShipCoordinates, 0);
-                        y = (int) Array.get(manualShipCoordinates, 1);
-                        x2 = (int) Array.get(manualShipCoordinates, 2);
-                        y2 = (int) Array.get(manualShipCoordinates, 3);
-                    }
-                    for (int a = x; x < x2; x++) {
-                        for (int b = y; y < y2; y++) {
-                            theBoard[a][b] = 1;
-                        }
-                    }
-                }
-            }
-        }
-    }
+//comment extracted here
 
     @NotNull
     @Contract("_ -> new")
-    private int[] makeShip(int z) {
+    int[] makeShip(int z) {
         Random randomizer = new Random();
-        int xEnd;
-        int yEnd;
+        int x2;
+        int y2;
 
-        int xStart = randomizer.nextInt(10);
-        int yStart = randomizer.nextInt(10);
-        xOrY = randomizer.nextBoolean();
+        int x = randomizer.nextInt(10);
+        int y = randomizer.nextInt(10);
+        isX = randomizer.nextBoolean();
 
-        if (xOrY) {
-            xEnd = xStart;
-            yEnd = yStart + z;
+        if (isX) {
+            x2 = x;
+            y2 = y + z;
 
         } else {
-            yEnd = yStart;
-            xEnd = xStart + z;
+            y2 = y;
+            x2 = x + z;
         }
 
-        return new int[] {xStart, yStart, xEnd, yEnd};
+        return new int[] {x, y, x2, y2};
     }
 
     @NotNull
     @Contract("_ -> new")
-    private int[] makeShip2(int z) {
+    int[] makeShip2(int z) {
         String direction;
         int xEnd = 0;
         int yEnd = 0;
@@ -151,9 +74,6 @@ public class Boba extends Battleship {
     }
 
     void fire() {
-        int fireX = 0;
-        int fireY = 0;
-
         fireValidEntry();
         fireX = (int) Array.get(fireValidEntry(), 0);
         fireY = (int) Array.get(fireValidEntry(), 1);
@@ -197,23 +117,23 @@ public class Boba extends Battleship {
     @NotNull
     @Contract(" -> new")
     private int[] fireValidEntry() {
-        int fire1;
-        int fire2;
+        int fireX;
+        int fireY;
 
         System.out.println("Where would you like to fire?\nEnter the x value:");
         try {
-            fire1 = Hello.nextInt();
+            fireX = Hello.nextInt();
         } catch (Exception e) {
             System.out.println("Error: Not an integer.");
-            fire1 = -1;
+            fireX = -1;
         }
 
         System.out.println("Enter the y value:");
         try {
-            fire2 = Hello.nextInt();
+            fireY = Hello.nextInt();
         } catch (Exception e) {
             System.out.println("Error: Not an integer.");
-            fire2 = -1;
+            fireY = -1;
         }
         return new int[] {fireX, fireY};
     }
