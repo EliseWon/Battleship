@@ -27,7 +27,7 @@ public class Battleship {
         if (randomVsManual.equalsIgnoreCase("Randomly")) {
             System.out.println("Player 1");
             ship1.randomizeShips();
-            System.out.println("Player 2");
+            System.out.println("\nPlayer 2");
             ship2.randomizeShips();
         } else if (randomVsManual.equalsIgnoreCase("Manually")) {
             ship1.randomizeShips();
