@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Boba extends Battleship {
 
-    int[][] theBoard = new int[10][10];
+    int[][] theBoard = new int[][] { {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,}};
 
     Boba(int startX, int startY, int endX, int endY, int initialPoints) {
         x = startX;

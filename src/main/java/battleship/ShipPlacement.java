@@ -23,7 +23,8 @@ public class ShipPlacement extends Boba {
 
         for (int i : shipLengths) {
             int z = shipLengths.get(i);
-            ArrayList<Integer> compareWithMe = new ArrayList<Integer>();
+            ArrayList<Integer> compareX = new ArrayList<Integer>();
+            ArrayList<Integer> compareY = new ArrayList<Integer>();
             makeShip(z);
 
             while (x2 > 9 || y2 > 9) {
@@ -32,14 +33,14 @@ public class ShipPlacement extends Boba {
 
             for (int p = x; p < x2; p++) {
                 for (int q = y; q < y2; q++) {
-                    compareWithMe.add(x, y);
-                    System.out.println(compareWithMe);
+                    compareX.add(p);
+                    compareY.add(q);
+
+                    for (int i2 = 0; i2 < compareX.size(); i2++) {
+                        makeShip(z);
+                    }
                 }
             }
-
-//            if(compareWithMe.contains()) {
-//
-//            }
 
             for (int m = 0; m < theBoard.length; m++) {
                 for (int n = 0; n < theBoard[0].length; n++) {

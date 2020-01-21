@@ -24,6 +24,9 @@ public class Battleship {
                 "so I highly recommend drawing it on a piece of paper.\n" +
                 "The field goes from zero to nine.\n\n" +
                 "Would you like to place your ships randomly or manually?");
+
+        ArrayList<Integer> compareWithMe = new ArrayList<Integer>();
+
 //        String randomVsManual = Hello.nextLine();
 
 //        if (randomVsManual.equalsIgnoreCase("Randomly")) {
@@ -38,9 +41,9 @@ public class Battleship {
 //            System.out.println("Invalid response.");
 //        }
 
-        while (ship1.points <= 17 || ship2.points <= 17) {
-            ship1.fire();
-            ship2.computerFire();
-        }
+//        while (ship1.points <= 17 || ship2.points <= 17) {
+//            ship1.fire();
+//            ship2.computerFire();
+//        }
     }
 }
