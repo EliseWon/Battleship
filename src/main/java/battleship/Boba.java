@@ -10,7 +10,11 @@ public class Boba extends Battleship {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     int[][] theBoard = new int[][] { {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0,}};
+=======
+    private static int[] shipLengths = {2, 3, 3, 4, 5};
+>>>>>>> parent of 26be694... Depression
 =======
     private static int[] shipLengths = {2, 3, 3, 4, 5};
 >>>>>>> parent of 26be694... Depression
@@ -124,6 +128,7 @@ public class Boba extends Battleship {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     @NotNull
     @Contract("_ -> new")
     int[] makeShip2(int z) {
@@ -158,6 +163,12 @@ public class Boba extends Battleship {
         fireValidEntry();
         fireX = (int) Array.get(fireValidEntry(), 0);
         fireY = (int) Array.get(fireValidEntry(), 1);
+=======
+    void fire() {
+        System.out.println("Where would you like to fire?\nEnter the x value:");
+            int fireX = Hello.nextInt();
+            System.out.println("Error: Not an integer.");
+>>>>>>> parent of 26be694... Depression
 =======
     void fire() {
         System.out.println("Where would you like to fire?\nEnter the x value:");
@@ -214,6 +225,7 @@ public class Boba extends Battleship {
     }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     @NotNull
     @Contract(" -> new")
@@ -238,6 +250,8 @@ public class Boba extends Battleship {
         }
         return new int[] {fireX, fireY};
     }
+=======
+>>>>>>> parent of 26be694... Depression
 =======
 >>>>>>> parent of 26be694... Depression
 =======

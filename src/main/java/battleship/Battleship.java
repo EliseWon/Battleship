@@ -33,6 +33,7 @@ public class Battleship {
             System.out.println("Player 1");
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             //ship1.randomizeShips();
             System.out.println("\nPlayer 2");
             //ship2.randomizeShips();
@@ -48,6 +49,8 @@ public class Battleship {
 //            ship2.computerFire();
 //        }
 =======
+=======
+>>>>>>> parent of 26be694... Depression
 =======
 >>>>>>> parent of 26be694... Depression
             ship1.randomizeShips();
