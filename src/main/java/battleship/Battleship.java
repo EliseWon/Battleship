@@ -31,6 +31,7 @@ public class Battleship {
 
 //        if (randomVsManual.equalsIgnoreCase("Randomly")) {
             System.out.println("Player 1");
+<<<<<<< HEAD
             //ship1.randomizeShips();
             System.out.println("\nPlayer 2");
             //ship2.randomizeShips();
@@ -45,5 +46,21 @@ public class Battleship {
 //            ship1.fire();
 //            ship2.computerFire();
 //        }
+=======
+            ship1.randomizeShips();
+            System.out.println("Player 2");
+            ship2.randomizeShips();
+        } else if (randomVsManual.equalsIgnoreCase("Manually")) {
+            ship1.randomizeShips();
+            ship2.manuallyPlaceShips();
+        } else {
+            System.out.println("Invalid response.");
+        }
+
+        while (ship1.points <= 17 || ship2.points <= 17) {
+            ship1.fire();
+            ship2.computerFire();
+        }
+>>>>>>> parent of 26be694... Depression
     }
 }
